@@ -53,6 +53,13 @@ public class TestSubtractOperation {
 	}
 	
 	@Test
+	public void testSubtractMoreComplexOperation2(){
+		Calculator c = new CalculatorDosFeras();
+		String result = c.subtract("10", "99");
+		Assert.assertEquals("resultado esperado", "-89", result);
+	}
+	
+	@Test
 	public void testSubtractComplexOperation(){
 		Calculator c = new CalculatorDosFeras();
 		String result = c.subtract("878797887", "782221");

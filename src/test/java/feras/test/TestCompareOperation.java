@@ -59,4 +59,19 @@ public class TestCompareOperation {
 		Assert.assertEquals("resultado esperado", new Integer(0), result);
 	}
 	
+	@Test
+	public void testEqualsTermsWithLeftZeros(){
+		Calculator c = new CalculatorDosFeras();
+		Integer result = c.compare("009", "9");
+		Assert.assertEquals("resultado esperado", new Integer(0), result);
+	}
+	
+	@Test
+	public void testEqualsTermsWithLeftZerosRightTerm(){
+		Calculator c = new CalculatorDosFeras();
+		Integer result = c.compare("9", "009");
+		Assert.assertEquals("resultado esperado", new Integer(0), result);
+	}
+	
+	
 }

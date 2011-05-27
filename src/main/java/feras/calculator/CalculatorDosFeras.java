@@ -8,8 +8,8 @@ public class CalculatorDosFeras implements Calculator {
 	@Override
 	public String add(String a, String b) {
 
-		Term leftTerm = new Term(a);
-		Term rightTerm = new Term(b);
+		Term leftTerm = new Term(slayLeftZeros(a));
+		Term rightTerm = new Term(slayLeftZeros(b));
 		
 		if (!leftTerm.isMinor() && rightTerm.isMinor())
 			return subtract(leftTerm.absoluteValue(), rightTerm.absoluteValue());			
@@ -40,8 +40,8 @@ public class CalculatorDosFeras implements Calculator {
 
 	@Override
 	public String subtract(String a, String b) {
-		Term leftTerm = new Term(a);
-		Term rightTerm = new Term(b);
+		Term leftTerm = new Term(slayLeftZeros(a));
+		Term rightTerm = new Term(slayLeftZeros(b));
 		
 		if (!leftTerm.isMinor() && rightTerm.isMinor())
 			return add(leftTerm.absoluteValue(), rightTerm.absoluteValue());

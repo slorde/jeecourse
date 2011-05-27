@@ -27,9 +27,22 @@ public class Term {
 	}
 	
 	public boolean isBigger(Term t){
-		return size() >= t.size();
+		if (size() == t.size()) {
+			return compareNumberByNumber(t.absoluteValue());
+		} else {
+			return size() >= t.size();
+		}
 	}
 	
+	private boolean compareNumberByNumber(String otherString) {
+		int index = 0;
+		while (index < representation.length()){
+			if (representation.charAt(index) != otherString.charAt(index))
+				return representation.charAt(index) > otherString.charAt(index);
+			index++;
+		}
+		return true;
+	}
 	public int size(){
 		return representation.length();
 	}
