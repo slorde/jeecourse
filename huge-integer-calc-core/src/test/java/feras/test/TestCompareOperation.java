@@ -4,72 +4,72 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import feras.calculador.Calculator;
-import feras.calculator.CalculatorDosFeras;
+import feras.calculator.Calculator;
+import feras.calculator.CalculatorFactory;
 
 
 public class TestCompareOperation {
 	@Test
 	public void testLeftBiggerTerm(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("10", "0");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("10", "0");
 		Assert.assertEquals("resultado esperado", new Integer(1), result);
 	}
 	
 	@Test
 	public void testRightBiggerTerm(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("0", "10");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("0", "10");
 		Assert.assertEquals("resultado esperado", new Integer(-1), result);
 	}
 	
 	@Test
 	public void testRigthBiggerTermComplex(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("15", "18");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("15", "18");
 		Assert.assertEquals("resultado esperado", new Integer(-1), result);
 	}
 	
 	@Test
 	public void testLeftBiggerTermComplex(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("150", "0");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("150", "0");
 		Assert.assertEquals("resultado esperado", new Integer(1), result);
 	}	
 	
 	
 	@Test
 	public void testLeftBiggerTermMoreComplex(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("1555665656569", "18988989899");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("1555665656569", "18988989899");
 		Assert.assertEquals("resultado esperado", new Integer(1), result);
 	}	
 
 	@Test
 	public void testRightBiggerTermMoreComplex(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("99999999", "999999999999999999999");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("99999999", "999999999999999999999");
 		Assert.assertEquals("resultado esperado", new Integer(-1), result);
 	}
 	
 	@Test
 	public void testEqualsTerms(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("999999999999999999999", "999999999999999999999");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("999999999999999999999", "999999999999999999999");
 		Assert.assertEquals("resultado esperado", new Integer(0), result);
 	}
 	
 	@Test
 	public void testEqualsTermsWithLeftZeros(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("009", "9");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("009", "9");
 		Assert.assertEquals("resultado esperado", new Integer(0), result);
 	}
 	
 	@Test
 	public void testEqualsTermsWithLeftZerosRightTerm(){
-		Calculator c = new CalculatorDosFeras();
-		Integer result = c.compare("9", "009");
+		Calculator c = CalculatorFactory.newCalculator();
+		Integer result = c.compareTo("9", "009");
 		Assert.assertEquals("resultado esperado", new Integer(0), result);
 	}
 	

@@ -1,9 +1,16 @@
 package feras.calculator;
 
-import feras.calculador.Calculator;
-import feras.calculador.elements.Term;
 
-public class CalculatorDosFeras implements Calculator {
+class CalculatorOfTheBeasts implements Calculator {
+
+	
+	public String add(String a, String b) {
+		return parse(a).add(parse(b));
+	}
+
+	public T parse(String string) {
+		return parser.parse;
+	}
 
 	@Override
 	public String add(String a, String b) {
@@ -80,7 +87,7 @@ public class CalculatorDosFeras implements Calculator {
 	}
 
 	@Override
-	public Integer compare(String a, String b) {
+	public Integer compareTo(String a, String b) {
 		String subtractResult = subtract(a, b);
 		
 		Integer result = 0;

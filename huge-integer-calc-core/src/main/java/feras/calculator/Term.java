@@ -1,6 +1,6 @@
-package feras.calculador.elements;
+package feras.calculator;
 
-public class Term {
+class Term {
 
 	private String representation;
 	private Integer index = 0;
