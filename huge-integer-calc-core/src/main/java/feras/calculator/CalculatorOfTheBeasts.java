@@ -3,15 +3,6 @@ package feras.calculator;
 
 class CalculatorOfTheBeasts implements Calculator {
 
-	
-	public String add(String a, String b) {
-		return parse(a).add(parse(b));
-	}
-
-	public T parse(String string) {
-		return parser.parse;
-	}
-
 	@Override
 	public String add(String a, String b) {
 

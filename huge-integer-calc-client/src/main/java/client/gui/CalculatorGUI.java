@@ -21,12 +21,11 @@ public class CalculatorGUI {
 	}
 
 	private static void inicializaTela() throws HeadlessException {
-//		Thread.setDefaultUncaughtExceptionHandler(new GlobalHandler());
+		Thread.setDefaultUncaughtExceptionHandler(new GlobalHandler());
 		JFrame tela = new JFrame();
 		tela.setLayout(new FlowLayout());
-		tela.setSize(560, 150);
+		tela.setSize(540, 150);
 		tela.setTitle("Calculator of the Beasts");
-		tela.setResizable(false);
 		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel lbl = new JLabel();
 		lbl.setText("Termo 1: ");		
@@ -55,22 +54,26 @@ public class CalculatorGUI {
 		tela.add(resultado);		
 		
 		tela.setVisible(true);
+		tela.setResizable(false);
 		tela.setLocationRelativeTo(null);
 
 		botao.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            @Override
+			public void actionPerformed(ActionEvent e) {
                 resultado.setText(CalculatorFactory.newCalculator().add(termo1.getText(), termo2.getText()));
             }
         });
 		
 		botao2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            @Override
+			public void actionPerformed(ActionEvent e) {
             	resultado.setText(CalculatorFactory.newCalculator().subtract(termo1.getText(), termo2.getText()));
             }
         });
 		
 		botao3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            @Override
+			public void actionPerformed(ActionEvent e) {
             	resultado.setText(CalculatorFactory.newCalculator().compareTo(termo1.getText(), termo2.getText()).toString());
             }
         });

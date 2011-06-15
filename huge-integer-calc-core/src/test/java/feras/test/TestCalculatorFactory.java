@@ -8,7 +8,6 @@ public class TestCalculatorFactory {
 
 	@Test
 	public void instantiationTest() {
-		CalculatorFactory.newCalculator();
-		
+		CalculatorFactory.newCalculator();// load("feras.calculator.CalculatorOfTheBeasts").newCalculator();
 	}
 }
