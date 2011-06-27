@@ -9,24 +9,22 @@ public class CalculatorConsole {
 			System.out.println("Usage: CalculatorConsole number operator number \n fuking asshole!");
 			return;
 		}
-		String result = "";
-		switch (args[1].charAt(0)) {
+		
+		System.out.println(executeOperation(args[0], args[2], args[1]));
+	}
+
+	public static String executeOperation(String term1, String term2, String operation) {
+		switch (operation.charAt(0)) {
 		case '+':		
-			result = CalculatorFactory.newCalculator().add(args[0], args[2]);
-			break;
+			return CalculatorFactory.newCalculator().add(term1, term2);			
 		case '-':
-			result = CalculatorFactory.newCalculator().subtract(args[0], args[2]);
-			break;
+			return CalculatorFactory.newCalculator().subtract(term1, term2);			
 		case '=':
-			result = CalculatorFactory.newCalculator().compareTo(args[0], args[2]).toString();
-			break;
+			return CalculatorFactory.newCalculator().compareTo(term1, term2).toString();			
 
 		default:
-			System.out.println("Congratulations! You've manage to input a wrong operator. \n Only accept: '+' '-' '=' ");
-			break;
+			return "Congratulations! You've manage to input a wrong operator. \n Only accept: '+' '-' '=' ";
 		}
-		
-		System.out.println(result);
 	}
 	
 }

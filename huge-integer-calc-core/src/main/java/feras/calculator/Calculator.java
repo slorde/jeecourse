@@ -1,9 +1,12 @@
 package feras.calculator;
 
-public interface Calculator {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-	String add(String string, String string2);
-	String subtract(String string, String string2);
-	Integer compareTo(String string, String string2);
+public interface Calculator extends Remote {
+
+	String add(String string, String string2) throws RemoteException;
+	String subtract(String string, String string2) throws RemoteException;
+	Integer compareTo(String string, String string2) throws RemoteException;
 
 }

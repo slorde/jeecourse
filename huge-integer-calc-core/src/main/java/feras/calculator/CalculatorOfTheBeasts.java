@@ -1,10 +1,21 @@
 package feras.calculator;
 
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-class CalculatorOfTheBeasts implements Calculator {
+
+class CalculatorOfTheBeasts extends UnicastRemoteObject implements Calculator {
+
+	private static final long serialVersionUID = 1L;
+	
+	protected CalculatorOfTheBeasts() throws RemoteException  {
+		super();
+	}
+
 
 	@Override
-	public String add(String a, String b) {
+	public String add(String a, String b) throws RemoteException{ 
 
 		Term leftTerm = new Term(slayLeftZeros(a));
 		Term rightTerm = new Term(slayLeftZeros(b));
@@ -37,7 +48,7 @@ class CalculatorOfTheBeasts implements Calculator {
 	}
 
 	@Override
-	public String subtract(String a, String b) {
+	public String subtract(String a, String b) throws RemoteException{
 		Term leftTerm = new Term(slayLeftZeros(a));
 		Term rightTerm = new Term(slayLeftZeros(b));
 		
@@ -78,7 +89,7 @@ class CalculatorOfTheBeasts implements Calculator {
 	}
 
 	@Override
-	public Integer compareTo(String a, String b) {
+	public Integer compareTo(String a, String b) throws RemoteException{
 		String subtractResult = subtract(a, b);
 		
 		Integer result = 0;
@@ -99,4 +110,13 @@ class CalculatorOfTheBeasts implements Calculator {
 		String result = s.replaceFirst("[0]*", "");
 		return "".equals(result) ? "0" : result;
 	}
+
+	public static void main(String[] args) throws Exception{
+		
+		Calculator c = new CalculatorOfTheBeasts();
+		
+		Naming.bind("Calculator", c);
+		System.out.println("Bounded");
+	}
+
 }

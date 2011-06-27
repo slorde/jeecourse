@@ -12,28 +12,38 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import feras.calculator.Calculator;
 import feras.calculator.CalculatorFactory;
+import feras.proxy.CalculatorServerProxy;
 
 public class CalculatorGUI {
 
-	public static void main(String[] args) {	
+	private Calculator calculator = null;
+	
+	public CalculatorGUI() {
+		calculator = CalculatorFactory.newCalculator();
+		calculator = new CalculatorServerProxy();
 		inicializaTela();
 	}
+	
+	public static void main(String[] args) {		
+		new CalculatorGUI();
+	}
 
-	private static void inicializaTela() throws HeadlessException {
+	private void inicializaTela() throws HeadlessException {
 		Thread.setDefaultUncaughtExceptionHandler(new GlobalHandler());
-		JFrame tela = new JFrame();
-		tela.setLayout(new FlowLayout());
-		tela.setSize(540, 150);
-		tela.setTitle("Calculator of the Beasts");
-		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JFrame frame = new JFrame();
+		frame.setLayout(new FlowLayout());
+		frame.setSize(540, 150);
+		frame.setTitle("Calculator of the Beasts");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel lbl = new JLabel();
 		lbl.setText("Termo 1: ");		
-		final JTextField termo1 = new JTextField(40);		
+		final JTextField term1 = new JTextField(40);		
 			
 		JLabel lbl2 = new JLabel();
 		lbl2.setText("Termo 2: ");		
-		final JTextField termo2 = new JTextField(40);
+		final JTextField term2 = new JTextField(40);
 				
 		JButton botao = new JButton();
 		botao.setText("+");
@@ -44,37 +54,37 @@ public class CalculatorGUI {
 					
 		final JTextField resultado = new JTextField(40);
 		
-		tela.add(lbl);
-		tela.add(termo1);
-		tela.add(lbl2);
-		tela.add(termo2);
-		tela.add(botao);
-		tela.add(botao2);
-		tela.add(botao3);		
-		tela.add(resultado);		
+		frame.add(lbl);
+		frame.add(term1);
+		frame.add(lbl2);
+		frame.add(term2);
+		frame.add(botao);
+		frame.add(botao2);
+		frame.add(botao3);		
+		frame.add(resultado);		
 		
-		tela.setVisible(true);
-		tela.setResizable(false);
-		tela.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 
 		botao.addActionListener(new ActionListener() {
             @Override
 			public void actionPerformed(ActionEvent e) {
-                resultado.setText(CalculatorFactory.newCalculator().add(termo1.getText(), termo2.getText()));
+                resultado.setText(calculator.add(term1.getText(), term2.getText()));
             }
         });
 		
 		botao2.addActionListener(new ActionListener() {
             @Override
 			public void actionPerformed(ActionEvent e) {
-            	resultado.setText(CalculatorFactory.newCalculator().subtract(termo1.getText(), termo2.getText()));
+            	resultado.setText(calculator.subtract(term1.getText(), term2.getText()));
             }
         });
 		
 		botao3.addActionListener(new ActionListener() {
             @Override
 			public void actionPerformed(ActionEvent e) {
-            	resultado.setText(CalculatorFactory.newCalculator().compareTo(termo1.getText(), termo2.getText()).toString());
+            	resultado.setText(calculator.compareTo(term1.getText(), term2.getText()).toString());
             }
         });
 	}
